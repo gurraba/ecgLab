@@ -1,0 +1,25 @@
+% Define the file name
+filename = 'ecgdata.txt';
+
+% Read the file into a table specifying all columns as double
+opts = detectImportOptions(filename);
+opts = setvartype(opts, 'double');  % Set all variables to double
+
+% Read the file into a table with original headers preserved
+dataTable = readtable(filename, 'VariableNamingRule', 'preserve');
+
+% Access data using preserved column names (e.g., headers with spaces)
+TimeData = dataTable{:, 'Time - Dev6/ai0'};
+TimeData = linspace(0, TimeData(end) - TimeData(1), size(TimeData,1));
+
+AmplitudeData = dataTable{:, 'Amplitude - Dev6/ai0'};
+% Assuming AmplitudeData is a cell array of strings like {'-2,94984'}
+% Replace commas with periods and convert strings to doubles
+AmplitudeData = str2double(strrep(AmplitudeData, ',', '.'));
+
+% Plotting data using the extracted variables
+plot(TimeData, AmplitudeData);  % Plot as points connected by lines
+xlabel('Time');  % Label x-axis
+ylabel('Amplitude');  % Label y-axis
+title('ECG');  % Add title to the plot
+grid on;  % Add grid for easier visualization
