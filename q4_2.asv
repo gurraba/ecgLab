@@ -33,22 +33,28 @@ title('Filter Chebyshev type II')
 % 5
 figure(2)
 plot(t,AmplitudeData)
-hold on;
-ChebyFilteredAmplitudeData= filtfilt (sos,g,AmplitudeData) ;
-plot(t, ChebyFilteredAmplitudeData)
-hold off;
-legend('Raw', 'Chebyshev type II');
 xlabel('Time')
 ylabel('Amplitude')
-title('ECG')
+title('ECG raw')
 
 figure(3)
-plot(f,abs(FourierAmplitudeData))
-hold on;
-FourierChebyFilteredAmplitudeData = fft(ChebyFilteredAmplitudeData);
-plot(f,abs(FourierChebyFilteredAmplitudeData))
-hold off;
-legend('Raw', 'Chebyshev type II');
+y = fft(AmplitudeData);
+plot(f,abs(y))
 xlabel('Frequency (Hz)')
 ylabel('Magnitude')
-title('ECG spectrum')
+title('ECG magnitude raw')
+
+figure(4)
+Filtered_signal = filtfilt (sos,g,signal) ;
+plot(t, Filtered_signal)
+xlabel('Time')
+ylabel('Amplitude')
+title('ECG filtered Chebyshev type II')
+
+figure(5)
+y = fft(Filtered_signal);
+plot(f,abs(y))
+xlabel('Frequency (Hz)')
+ylabel('Magnitude')
+title('ECG magnitude filtered Chebyshev type II')
+% DC offset removed but slow oscillations around 0 V

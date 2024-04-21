@@ -8,30 +8,31 @@ bw = wo /35;
 
 figure(1)
 freqz (b, a, 2^16 , Fs)
+title('Notch filter 50 Hz')
 
-% -
-figure(2)
 Ts = 1/Fs;
 t = TimeData;
-signal = AmplitudeData;
-y = fft(signal);
+FourierAmplitudeData = fft(AmplitudeData);
 fs = 1/Ts;
-f = (0:length(y)-1)*fs/length(y);
-plot(f,abs(y))
-xlabel('Frequency (Hz)')
-ylabel('Magnitude')
-title('Magnitude raw')
-% -
+f = (0:length(y)-1)*fs/length(FourierAmplitudeData);
+
+figure(2)
+plot(t, AmplitudeData)
+hold on;
+NotchFilteredAmplitudeData = filtfilt (b ,a , AmplitudeData) ;
+plot(t, NotchFilteredAmplitudeData)
+hold off;
+legend('Raw', 'Notch 50 Hz');
+xlabel('Time')
+ylabel('Amplitude')
+title('ECG')
 
 figure(3)
-Filtered_signal = filtfilt (b ,a , signal) ;
-plot(t, Filtered_signal)
-
-figure(4)
-y = fft(Filtered_signal);
-fs = 1/Ts;
-f = (0:length(y)-1)*fs/length(y);
-plot(f,abs(y))
+plot(f, abs(FourierAmplitudeData))
+hold on;
+plot(f, abs(FourierNotchFilteredAmplitudeData))
+hold off;
+legend('Raw', 'Notch 50 Hz');
 xlabel('Frequency (Hz)')
 ylabel('Magnitude')
-title('Magnitude notch filter 50 Hz')
+title('ECG spectrum')
