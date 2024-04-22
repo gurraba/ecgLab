@@ -1,0 +1,1 @@
+[ qrs_amp_raw , qrs_i_raw , delay ] = pan_tompkin ( AmplitudeData , fs ,1);
