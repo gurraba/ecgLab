@@ -14,7 +14,7 @@ Ts = 1/Fs;
 t = TimeData;
 FourierAmplitudeData = fft(AmplitudeData);
 fs = 1/Ts;
-f = (0:length(y)-1)*fs/length(FourierAmplitudeData);
+f = (0:length(FourierAmplitudeData)-1)*fs/length(FourierAmplitudeData);
 
 figure(2)
 plot(t, AmplitudeData)
@@ -30,6 +30,7 @@ title('ECG')
 figure(3)
 plot(f, abs(FourierAmplitudeData))
 hold on;
+FourierNotchFilteredAmplitudeData = fft(NotchFilteredAmplitudeData);
 plot(f, abs(FourierNotchFilteredAmplitudeData))
 hold off;
 legend('Raw', 'Notch 50 Hz');
