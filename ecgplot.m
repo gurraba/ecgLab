@@ -19,7 +19,7 @@ AmplitudeData = str2double(strrep(AmplitudeData, ',', '.'));
 
 % Plotting data using the extracted variables
 plot(TimeData, AmplitudeData);  % Plot as points connected by lines
-xlabel('Time');  % Label x-axis
-ylabel('Amplitude');  % Label y-axis
+xlabel('Time [s]');  % Label x-axis
+ylabel('Amplitude [mV]');  % Label y-axis
 title('ECG');  % Add title to the plot
 grid on;  % Add grid for easier visualization

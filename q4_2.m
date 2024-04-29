@@ -38,8 +38,8 @@ ChebyFilteredAmplitudeData= filtfilt (sos,g,AmplitudeData) ;
 plot(t, ChebyFilteredAmplitudeData)
 hold off;
 legend('Raw', 'Chebyshev type II');
-xlabel('Time')
-ylabel('Amplitude')
+xlabel('Time [s]')
+ylabel('Amplitude [mV]')
 title('ECG')
 
 figure(3)
@@ -49,6 +49,6 @@ FourierChebyFilteredAmplitudeData = fft(ChebyFilteredAmplitudeData);
 plot(f,abs(FourierChebyFilteredAmplitudeData))
 hold off;
 legend('Raw', 'Chebyshev type II');
-xlabel('Frequency (Hz)')
+xlabel('Frequency [Hz]')
 ylabel('Magnitude')
 title('ECG spectrum')
