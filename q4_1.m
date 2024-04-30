@@ -1,5 +1,5 @@
 F0 = 50;
-Fs = 250;
+Fs = 256;
 Fn = Fs / 2;
 
 wo = F0 / Fn ;
@@ -17,10 +17,12 @@ fs = 1/Ts;
 f = (0:length(FourierAmplitudeData)-1)*fs/length(FourierAmplitudeData);
 
 figure(2)
-plot(t, AmplitudeData)
+%plot(t, AmplitudeData)
+plot(AmplitudeData)
 hold on;
 NotchFilteredAmplitudeData = filtfilt (b ,a , AmplitudeData) ;
-plot(t, NotchFilteredAmplitudeData, '--', 'LineWidth', 1)
+%plot(t, NotchFilteredAmplitudeData, '--', 'LineWidth', 1)
+plot(NotchFilteredAmplitudeData, '--', 'LineWidth', 1)
 hold off;
 legend('Raw', 'Notch 50 Hz');
 xlabel('Time [s]')

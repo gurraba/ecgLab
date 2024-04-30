@@ -32,10 +32,12 @@ title('Filter Chebyshev type II')
 
 % 5
 figure(2)
-plot(t,AmplitudeData)
+%plot(t,AmplitudeData)
+plot(AmplitudeData)
 hold on;
 ChebyFilteredAmplitudeData= filtfilt (sos,g,AmplitudeData) ;
-plot(t, ChebyFilteredAmplitudeData)
+%plot(t, ChebyFilteredAmplitudeData)
+plot(ChebyFilteredAmplitudeData)
 hold off;
 legend('Raw', 'Chebyshev type II');
 xlabel('Time [s]')

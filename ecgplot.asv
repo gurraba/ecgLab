@@ -18,13 +18,11 @@ AmplitudeData = dataTable{:, 'Amplitude - Dev6/ai0'};
 AmplitudeData = str2double(strrep(AmplitudeData, ',', '.'));
 
 % Use sample data sampled at 256 Hz instead of our data sampled at 50 Hz
-%load("ECG_Laura1.mat")
-AmplitudeData = matfile("ECG_Laura1.mat").ECG;
-disp(AmplitudeData)
+load("ECG_Laura1.mat")
+AmplitudeData = 
 
 % Plotting data using the extracted variables
-%plot(TimeData, AmplitudeData);  % Plot as points connected by lines
-plot(AmplitudeData);  % Plot as points connected by lines
+plot(TimeData, AmplitudeData);  % Plot as points connected by lines
 xlabel('Time [s]');  % Label x-axis
 ylabel('Amplitude [mV]');  % Label y-axis
 title('ECG');  % Add title to the plot
