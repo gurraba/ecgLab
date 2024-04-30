@@ -40,7 +40,7 @@ ChebyFilteredAmplitudeData= filtfilt (sos,g,AmplitudeData) ;
 plot(ChebyFilteredAmplitudeData)
 hold off;
 legend('Raw', 'Chebyshev type II');
-xlabel('Time [s]')
+xlabel('Sample nr')
 ylabel('Amplitude [mV]')
 title('ECG')
 

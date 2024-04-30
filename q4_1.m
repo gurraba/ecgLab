@@ -25,7 +25,7 @@ NotchFilteredAmplitudeData = filtfilt (b ,a , AmplitudeData) ;
 plot(NotchFilteredAmplitudeData, '--', 'LineWidth', 1)
 hold off;
 legend('Raw', 'Notch 50 Hz');
-xlabel('Time [s]')
+xlabel('Sample nr')
 ylabel('Amplitude [mV]')
 title('ECG')
 
