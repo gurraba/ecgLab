@@ -27,7 +27,8 @@ disp(g)
 
 % 4
 figure(1)
-freqz (sos, n, Fs)
+%freqz (sos, n, Fs)
+freqz (sos, 2048, Fs)
 title('Filter Chebyshev type II')
 
 % 5
